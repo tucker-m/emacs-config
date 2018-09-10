@@ -126,7 +126,8 @@
     "SPC w" "windows"
     "SPC p" "projects"
     "SPC g" "git"
-    "SPC s" "search"
+    "SPC s" "swiper"
+    "SPC r" "search"
   )
 )
 
@@ -173,9 +174,9 @@
    "ga" 'magit-commit-amend
    "gl" 'magit-log
    "gm" 'magit-ediff-resolve
-   "sf" 'swiper
-   "sg" 'counsel-git-grep
-   "sp" 'projectile-grep
+   "s" 'swiper
+   "rg" 'counsel-git-grep
+   "rp" 'projectile-grep
    ))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
