@@ -104,12 +104,6 @@
   :config
   (global-evil-surround-mode 1))
 
-(use-package evil-goggles
-  :ensure t
-  :config
-  (evil-goggles-mode)
-  (evil-goggles-use-diff-faces))
-
 (defun setup-tide-mode ()
   (interactive)
   (tide-setup)
