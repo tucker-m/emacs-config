@@ -10,6 +10,7 @@
 (setq coding-system-for-write 'utf-8 )
 (setq sentence-end-double-space nil)	; sentence SHOULD end with only a point.
 (setq default-fill-column 80)		; toggle wrapping text at the 80th character
+(setq-default fill-column 80)
 
 (require 'package)
 
@@ -56,7 +57,18 @@
 (use-package magit :ensure t)
 (use-package evil-magit :ensure t)
 
-(use-package org :ensure t)
+(use-package org :ensure t
+  (org-indent-mode)
+  :config
+  (setq org-refile-targets '((nil :maxlevel . 9)
+			     (org-agenda-files :maxlevel . 9)))
+  (setq org-outline-path-complete-in-steps nil)
+  (setq org-refile-use-outline-path t)
+  (custom-set-variables
+   '(org-directory "~/repos/org")
+   '(org-agenda-files (list org-directory)))
+  (setq org-log-done 'note))
+(use-package org-pomodoro :ensure t)
 (use-package evil-org :ensure t
   :config
   (add-hook 'org-mode-hook 'evil-org-mode))
@@ -67,6 +79,14 @@
   (global-display-line-numbers-mode 1)
   (column-number-mode 1)
   (linum-relative-on))
+
+(use-package fill-column-indicator :ensure t
+  :config
+  (setq fci-rule-color "darkblue")
+  (setq fci-rule-width 2)
+  (setq fci-rule-column 80))
+
+(add-hook 'org-mode-hook 'turn-on-auto-fill)
 
 (use-package exec-path-from-shell :ensure t
   :config
@@ -143,6 +163,7 @@
 )
 
 (use-package counsel :ensure t)
+(use-package counsel-gtags :ensure t)
 
 (defun create-and-move-right ()
   (interactive)
