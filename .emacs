@@ -53,10 +53,20 @@
   :config
   (evil-mode 1))
 
+(use-package enclose :ensure t
+  :config
+  (enclose-mode t))
+
+(use-package rainbow-delimiters :ensure t
+  :config
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+
 (use-package magit :ensure t)
 (use-package evil-magit :ensure t)
 
-(use-package org :ensure t)
+(use-package org :ensure t
+  :config
+  (setq org-agenda-files "~/repos"))
 (use-package evil-org :ensure t
   :config
   (add-hook 'org-mode-hook 'evil-org-mode))
@@ -188,9 +198,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-agenda-files
+   (quote
+    ("/home/tucker/repos/leeft/org/leeft.org" "/home/tucker/repos/leeft/src/typescript/logs/notes.org" "/home/tucker/repos/org-mode-notes/tasks.org")))
  '(package-selected-packages
    (quote
-    (tide company exec-path-from-shell fzf evil-org which-key use-package projectile linum-relative general flx evil-magit counsel color-theme-solarized color-theme-sanityinc-solarized))))
+    (origami rainbow-delimiters enclose evil-goggles evil-surround tide company exec-path-from-shell fzf evil-org which-key use-package projectile linum-relative general flx evil-magit counsel color-theme-solarized color-theme-sanityinc-solarized))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
