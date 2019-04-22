@@ -54,11 +54,20 @@
   :config
   (evil-mode 1))
 
+(use-package enclose :ensure t
+  :config
+  (enclose-mode t))
+
+(use-package rainbow-delimiters :ensure t
+  :config
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+
 (use-package magit :ensure t)
 (use-package evil-magit :ensure t)
 
 (use-package htmlize :ensure t)
-(use-package org :ensure t
+(use-package org :ensure t)
+(use-package evil-org :ensure t
   :config
   (setq org-refile-targets '((nil :maxlevel . 9)
 			     (org-agenda-files :maxlevel . 9)))
@@ -217,7 +226,7 @@
  '(org-startup-indented t)
  '(package-selected-packages
    (quote
-    (htmlize markdown-mode counsel-gtags fill-column-indicator org-pomodoro evil-goggles evil-surround tide company yaml-mode exec-path-from-shell fzf evil-org which-key use-package projectile linum-relative general flx evil-magit counsel color-theme-solarized color-theme-sanityinc-solarized))))
+    (htmlize markdown-mode counsel-gtags fill-column-indicator org-pomodoro evil-goggles evil-surround tide company yaml-mode exec-path-from-shell fzf evil-org which-key use-package projectile linum-relative general flx evil-magit counsel color-theme-solarized color-theme-sanityinc-solarized origami rainbow-delimiters enclose))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
