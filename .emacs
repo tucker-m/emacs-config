@@ -57,21 +57,19 @@
 (use-package magit :ensure t)
 (use-package evil-magit :ensure t)
 
+(use-package htmlize :ensure t)
 (use-package org :ensure t
-  (org-indent-mode)
   :config
   (setq org-refile-targets '((nil :maxlevel . 9)
 			     (org-agenda-files :maxlevel . 9)))
   (setq org-outline-path-complete-in-steps nil)
   (setq org-refile-use-outline-path t)
+  (setq org-log-done 'note)
   (custom-set-variables
-   '(org-directory "~/repos/org")
-   '(org-agenda-files (list org-directory)))
-  (setq org-log-done 'note))
+   '(org-startup-indented t)
+   '(org-agenda-files (file-expand-wildcards "~/repos/*/org"))))
 (use-package org-pomodoro :ensure t)
-(use-package evil-org :ensure t
-  :config
-  (add-hook 'org-mode-hook 'evil-org-mode))
+(use-package evil-org :ensure t)
 
 (use-package linum-relative :ensure t
   :config
@@ -86,7 +84,7 @@
   (setq fci-rule-width 2)
   (setq fci-rule-column 80))
 
-(add-hook 'org-mode-hook 'turn-on-auto-fill)
+(add-hook 'org-mode-hook 'turn-on-auto-fill 'evil-org-mode)
 
 (use-package exec-path-from-shell :ensure t
   :config
@@ -142,6 +140,9 @@
   :after (typescript-mode company flycheck)
   :hook ((typescript-mode . tide-setup)
          (typescript-mode . tide-hl-identifier-mode)))
+
+(use-package markdown-mode :ensure t
+  :mode (("\\.md\\'" . markdown-mode)))
 
 (use-package which-key :ensure t
   :config
@@ -209,9 +210,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "eacee5f1c2f46185d6f089d97b7953bd9fc5d5b773f72cc76c9fcb556eeba174" default)))
+ '(org-agenda-files (file-expand-wildcards "~/repos/*/org"))
+ '(org-startup-indented t)
  '(package-selected-packages
    (quote
-    (tide company exec-path-from-shell fzf evil-org which-key use-package projectile linum-relative general flx evil-magit counsel color-theme-solarized color-theme-sanityinc-solarized))))
+    (htmlize markdown-mode counsel-gtags fill-column-indicator org-pomodoro evil-goggles evil-surround tide company yaml-mode exec-path-from-shell fzf evil-org which-key use-package projectile linum-relative general flx evil-magit counsel color-theme-solarized color-theme-sanityinc-solarized))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
