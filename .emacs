@@ -24,6 +24,7 @@
     ;; For important compatibility libraries like cl-lib
     (add-to-list 'package-archives '("gnu" . (concat proto "://elpa.gnu.org/packages/")))))
 (setq package-enable-at-startup nil)
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 
 (package-initialize)
 
@@ -91,6 +92,11 @@
 
 (add-hook 'org-mode-hook 'turn-on-auto-fill 'evil-org-mode)
 
+(use-package ox-reveal :ensure t
+  :config
+  (setq org-reveal-root "file:///Users/tmcknight/repos/reveal.js-3.8.0")
+  (setq org-reveal-title-slide nil))
+
 (use-package exec-path-from-shell :ensure t
   :config
   (exec-path-from-shell-initialize))
@@ -130,6 +136,10 @@
 (use-package origami :ensure t
   :config
   (global-origami-mode))
+
+(use-package autopair :ensure t
+  :config
+  (autopair-global-mode))
 
 (defun setup-tide-mode ()
   (interactive)
@@ -223,7 +233,7 @@
  '(org-startup-indented t)
  '(package-selected-packages
    (quote
-    (counsel-gtags markdown-mode fill-column-indicator org-pomodoro htmlize origami rainbow-delimiters enclose evil-goggles evil-surround tide company exec-path-from-shell fzf evil-org which-key use-package projectile linum-relative general flx evil-magit counsel color-theme-solarized color-theme-sanityinc-solarized))))
+    (ox-reveal org-reveal autopair htmlize markdown-mode counsel-gtags fill-column-indicator org-pomodoro evil-surround tide company yaml-mode exec-path-from-shell fzf evil-org which-key use-package projectile linum-relative general flx evil-magit counsel color-theme-solarized color-theme-sanityinc-solarized htmlize origami rainbow-delimiters))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
