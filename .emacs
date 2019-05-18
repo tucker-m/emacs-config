@@ -233,7 +233,7 @@
  '(org-startup-indented t)
  '(package-selected-packages
    (quote
-    (ox-reveal org-reveal autopair htmlize markdown-mode counsel-gtags fill-column-indicator org-pomodoro evil-surround tide company yaml-mode exec-path-from-shell fzf evil-org which-key use-package projectile linum-relative general flx evil-magit counsel color-theme-solarized color-theme-sanityinc-solarized htmlize origami rainbow-delimiters))))
+    (autopair ox-reveal counsel-gtags markdown-mode fill-column-indicator org-pomodoro htmlize origami rainbow-delimiters enclose evil-goggles evil-surround tide company exec-path-from-shell fzf evil-org which-key use-package projectile linum-relative general flx evil-magit counsel color-theme-solarized color-theme-sanityinc-solarized))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
