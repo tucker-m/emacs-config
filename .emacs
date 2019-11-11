@@ -11,6 +11,8 @@
 (setq sentence-end-double-space nil)	; sentence SHOULD end with only a point.
 (setq default-fill-column 80)		; toggle wrapping text at the 80th character
 (setq-default fill-column 80)
+(setq-default indent-tabs-mode nil)
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 (require 'package)
 
@@ -37,7 +39,9 @@
 (package-install 'general))
 
 (tool-bar-mode -1)
+(menu-bar-mode -1)
 (scroll-bar-mode -1)
+(setq-default truncate-lines nil)
 
 (require 'use-package)
 
@@ -48,12 +52,29 @@
 
 (add-hook 'eshell-mode-hook
 	  (lambda ()
+	    ;; (add-to-list 'eshell-visual-subcommands '("git" "log" "diff"))
 	    (define-key eshell-mode-map (kbd "<tab>")
 	      (lambda () (interactive) (pcomplete-std-complete)))))
+
+(defun large-buffer-mode ()
+  (interactive)
+  (linum-mode -1)
+  (linum-relative-mode -1)
+  (buffer-disable-undo)
+  (font-lock-mode -1)
+  )
+(server-start)
+(unless (getenv "TERM_PROGRAM")
+  (setenv "TERM" "xterm"))
+(setenv "PAGER" "emacs-pager")
 
 (use-package evil :ensure t
   :config
   (evil-mode 1))
+
+(use-package pbcopy :ensure t
+  :config
+  (turn-on-pbcopy))
 
 (use-package rainbow-delimiters :ensure t
   :config
@@ -73,7 +94,8 @@
   (setq org-log-done 'note)
   (custom-set-variables
    '(org-startup-indented t)
-   '(org-agenda-files (file-expand-wildcards "~/repos/*/org"))))
+   ;; '(org-agenda-files (file-expand-wildcards "~/repos/*/org"))
+   ))
 (use-package org-pomodoro :ensure t)
 (use-package evil-org :ensure t)
 
@@ -160,6 +182,17 @@
   :hook ((typescript-mode . tide-setup)
          (typescript-mode . tide-hl-identifier-mode)))
 
+(use-package terraform-mode :ensure t
+  :config
+  (custom-set-variables
+   '(terraform-indent-level 2)))
+
+(use-package groovy-mode :ensure t)
+
+(use-package company-terraform :ensure t
+  :config
+  (company-terraform-init))
+
 (use-package markdown-mode :ensure t
   :mode (("\\.md\\'" . markdown-mode)))
 
@@ -236,7 +269,8 @@
  '(org-startup-indented t)
  '(package-selected-packages
    (quote
-    (ox-reveal org-reveal autopair htmlize markdown-mode counsel-gtags fill-column-indicator org-pomodoro evil-surround tide company yaml-mode exec-path-from-shell fzf evil-org which-key use-package projectile linum-relative general flx evil-magit counsel color-theme-solarized color-theme-sanityinc-solarized origami rainbow-delimiters))))
+    (groovy-mode company-terraform terraform-mode pbcopy ox-reveal org-reveal autopair htmlize markdown-mode counsel-gtags fill-column-indicator org-pomodoro evil-surround tide company yaml-mode exec-path-from-shell fzf evil-org which-key use-package projectile linum-relative general flx evil-magit counsel color-theme-solarized color-theme-sanityinc-solarized origami rainbow-delimiters)))
+ '(terraform-indent-level 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
