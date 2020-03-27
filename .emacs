@@ -192,6 +192,8 @@
 (use-package markdown-mode :ensure t
   :mode (("\\.md\\'" . markdown-mode)))
 
+(use-package scala-mode :ensure t)
+
 (use-package which-key :ensure t
   :config
   (which-key-mode 1)
@@ -264,11 +266,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "eacee5f1c2f46185d6f089d97b7953bd9fc5d5b773f72cc76c9fcb556eeba174" default)))
  '(org-agenda-files (file-expand-wildcards "~/repos/*/org"))
  '(org-startup-indented t)
  '(package-selected-packages
    (quote
-    (groovy-mode company-terraform terraform-mode pbcopy ox-reveal org-reveal autopair htmlize markdown-mode counsel-gtags fill-column-indicator org-pomodoro evil-surround tide company yaml-mode exec-path-from-shell fzf evil-org which-key use-package projectile linum-relative general flx evil-magit counsel color-theme-solarized color-theme-sanityinc-solarized origami rainbow-delimiters multiple-cursors)))
+    (scala-mode multiple-cursors groovy-mode company-terraform terraform-mode pbcopy ox-reveal org-reveal autopair htmlize markdown-mode counsel-gtags fill-column-indicator org-pomodoro evil-surround tide company yaml-mode exec-path-from-shell fzf evil-org which-key use-package projectile linum-relative general flx evil-magit counsel color-theme-solarized color-theme-sanityinc-solarized origami rainbow-delimiters)))
  '(terraform-indent-level 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
