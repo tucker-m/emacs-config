@@ -178,6 +178,8 @@
   :hook ((typescript-mode . tide-setup)
          (typescript-mode . tide-hl-identifier-mode)))
 
+(use-package ein :ensure t)
+
 (use-package terraform-mode :ensure t
   :config
   (custom-set-variables
@@ -273,7 +275,7 @@
  '(org-startup-indented t)
  '(package-selected-packages
    (quote
-    (scala-mode multiple-cursors groovy-mode company-terraform terraform-mode pbcopy ox-reveal org-reveal autopair htmlize markdown-mode counsel-gtags fill-column-indicator org-pomodoro evil-surround tide company yaml-mode exec-path-from-shell fzf evil-org which-key use-package projectile linum-relative general flx evil-magit counsel color-theme-solarized color-theme-sanityinc-solarized origami rainbow-delimiters)))
+    (ein scala-mode multiple-cursors groovy-mode company-terraform terraform-mode pbcopy ox-reveal org-reveal autopair htmlize markdown-mode counsel-gtags fill-column-indicator org-pomodoro evil-surround tide company yaml-mode exec-path-from-shell fzf evil-org which-key use-package projectile linum-relative general flx evil-magit counsel color-theme-solarized color-theme-sanityinc-solarized origami rainbow-delimiters)))
  '(terraform-indent-level 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
